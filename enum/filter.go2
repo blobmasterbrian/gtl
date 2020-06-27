@@ -1,0 +1,27 @@
+package enum
+
+// Keep acts as a function to filter out any elements that do NOT satisfy the given predicate.
+func Keep(type T)(slc []T, keep func(T) bool) []T {
+  var retval []T
+
+  for i := range slc {
+    if keep(slc[i]) {
+      retval = append(retval, slc[i])
+    }
+  }
+
+  return retval
+}
+
+// Reject acts as a function to filter out any elements that DO satisfy the given predicate.
+func Reject(type T)(slc []T, reject func(T) bool) []T {
+  var retval []T
+
+  for i := range slc {
+    if !reject(slc[i]) {
+      retval = append(retval, slc[i])
+    }
+  }
+
+  return retval
+}

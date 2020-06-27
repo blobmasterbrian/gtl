@@ -1,0 +1,28 @@
+package gtl
+
+import "github.com/blobmasterbrian/gtl/enum"
+
+// Apply namespaces enum.Apply to gtl.Apply
+func Apply(type T)(slc []T, pred func(T) T) {
+  enum.Apply(slc, pred)
+}
+
+// Each namespaces enum.Each to gtl.Each
+func Each(type T)(slc []T, pred func(T)) {
+  enum.Each(slc, pred)
+}
+
+// Keep namespaces enum.Keep to gtl.Keep
+func Keep(type T)(slc []T, pred func(T) bool) []T {
+  return enum.Keep(slc, pred)
+}
+
+// Map namespaces enum.Map to gtl.Map
+func Map(type T)(slc []T, pred func(T) T) []T {
+  return enum.Map(slc, pred)
+}
+
+// Reject namespaces enum.Reject to gtl.Reject
+func Reject(type T)(slc []T, pred func(T) bool) []T {
+  return enum.Reject(slc, pred)
+}

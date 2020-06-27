@@ -1,0 +1,37 @@
+package enum
+
+import "testing"
+
+func TestKeepInt(t *testing.T) {
+	var nums []int
+	for i := 0; i < 10; i++ {
+		nums = append(nums, i+1)
+	}
+
+	actual := Keep(nums, func(x int) bool {
+		return x%2 == 0
+	})
+
+	for _, elem := range actual {
+		if elem%2 == 1 {
+			t.Errorf("unexpected odd number %v", elem)
+		}
+	}
+}
+
+func TestRejectInt(t *testing.T) {
+	var nums []int
+	for i := 0; i < 10; i++ {
+		nums = append(nums, i+1)
+	}
+
+	actual := Reject(nums, func(x int) bool {
+		return x%2 == 0
+	})
+
+	for _, elem := range actual {
+		if elem%2 == 0 {
+			t.Errorf("unexpected even number %v", elem)
+		}
+	}
+}

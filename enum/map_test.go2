@@ -1,0 +1,41 @@
+package enum
+
+import (
+	"testing"
+)
+
+func TestMapInt(t *testing.T) {
+	var nums []int
+	for i := 0; i < 10; i++ {
+		nums = append(nums, i+1)
+	}
+
+	actual := Map(nums, func(x int) int {
+		return x * 2
+	})
+
+	for i, num := range nums {
+		if actual[i] != num*2 {
+			t.Errorf("got %v, want %v", actual[i], num*2)
+		}
+	}
+}
+
+func TestApplyInt(t *testing.T) {
+	var actual []int
+	var expected []int
+	for i := 0; i < 10; i++ {
+		actual = append(actual, i+1)
+		expected = append(expected, (i+1)*2)
+	}
+
+	Apply(actual, func(x int) int {
+		return x * 2
+	})
+
+	for i := range actual {
+		if actual[i] != expected[i] {
+			t.Errorf("got %v, want %v", actual[i], expected[i])
+		}
+	}
+}

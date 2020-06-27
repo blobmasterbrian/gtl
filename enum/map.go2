@@ -1,0 +1,26 @@
+package enum
+
+// Map maps a predicate function to each element of a slice and returns a slice of the results.
+func Map(type T)(slc []T, pred func(T) T) []T {
+  retval := make([]T, len(slc))
+
+  for i := range slc {
+    retval[i] = pred(slc[i])
+  }
+
+  return retval
+}
+
+// Apply applies a predicate to each element of a slice, mutating the elements of the passed slice.
+func Apply(type T)(slc []T, pred func(T) T) {
+  for i := range slc {
+    slc[i] = pred(slc[i])
+  }
+}
+
+// Each allows an operation to be run for each element without returning a new slice or mutating the passed slice.
+func Each(type T)(slc []T, pred func(T)) {
+  for i := range slc {
+    pred(slc[i])
+  }
+}
