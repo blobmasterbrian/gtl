@@ -12,6 +12,17 @@ func Each(type T)(slc []T, pred func(T)) {
   enum.Each(slc, pred)
 }
 
+// Exists namespaces enum.Exists to gtl.Exists
+func Exists(type T)(slc []T, pred func(T) bool) bool {
+  return enum.Exists(slc, pred)
+}
+
+// Find namespaces enum.Find to gtl.Find
+// TODO: implement when Find is re-implemented
+//func Find(type T)(slc []T, pred func(T) bool) (T, bool) {
+//  enum.Find(slc, pred)
+//}
+
 // Keep namespaces enum.Keep to gtl.Keep
 func Keep(type T)(slc []T, pred func(T) bool) []T {
   return enum.Keep(slc, pred)
@@ -25,4 +36,9 @@ func Map(type T)(slc []T, pred func(T) T) []T {
 // Reject namespaces enum.Reject to gtl.Reject
 func Reject(type T)(slc []T, pred func(T) bool) []T {
   return enum.Reject(slc, pred)
+}
+
+// Satisfies namespaces enum.Satisfies to gtl.Satisfies
+func Satisfies(type T)(slc []T, pred func(T) bool) bool {
+  return enum.Satisfies(slc, pred)
 }

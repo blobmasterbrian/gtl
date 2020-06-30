@@ -1,0 +1,82 @@
+package enum
+
+import "testing"
+
+func TestExistsInt(t *testing.T) {
+	var nums []int
+
+	for i := 0; i < 10; i++ {
+		nums = append(nums, i+1)
+	}
+
+	divisibleByFive := func(x int) bool {
+		return x%5 == 0
+	}
+
+	if !Exists(nums, divisibleByFive) {
+		t.Error("could not find element divisible by 5")
+	}
+
+	greaterThanTen := func(x int) bool {
+		return x > 10
+	}
+
+	if Exists(nums, greaterThanTen) {
+		t.Error("found element greater than 10")
+	}
+}
+
+// TODO: implement when Find is re-implemented
+//func TestFindInt(t *testing.T) {
+//	var nums []int
+//
+//	for i := 0; i < 10; i++ {
+//		nums = append(nums, i+1)
+//	}
+//
+//	divisibleByFive := func(x int) bool {
+//		return x%5 == 0
+//	}
+//
+//	elem, ok := Find(nums, divisibleByFive)
+//	if !ok {
+//		t.Error("could not find element divisible by 5")
+//	}
+//	if elem%5 != 0 {
+//		t.Errorf("returned element not divisible by 5: %+v", elem)
+//	}
+//
+//	greaterThanTen := func(x int) bool {
+//		return x > 10
+//	}
+//
+//	elem, ok = Find(nums, greaterThanTen)
+//	if ok || elem > 10 {
+//		t.Errorf("found element greater than 10: %+v", elem)
+//	}
+//}
+
+func TestSatisfiesInt(t *testing.T) {
+	var odds []int
+	var evens []int
+
+	for i := 0; i < 10; i++ {
+		if (i+1)%2 == 1 {
+			odds = append(odds, i+1)
+		} else {
+			evens = append(evens, i+1)
+		}
+	}
+
+	evenPredicate := func(x int) bool {
+		return x%2 == 0
+	}
+
+	if Satisfies(odds, evenPredicate) {
+		t.Error("odds returned true with even predicate")
+	}
+
+	if !Satisfies(evens, evenPredicate) {
+		t.Error("evens returned false with even predicate")
+	}
+}

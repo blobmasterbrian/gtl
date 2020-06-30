@@ -1,0 +1,41 @@
+package enum
+
+// Exists applies a predicate function to each element and returns a boolean
+// representing whether ANY element of the collection satisfied that predicate
+func Exists(type T)(slc []T, pred func(T) bool) bool {
+  for i := range slc {
+    if pred(slc[i]) {
+      return true
+    }
+  }
+
+  return false
+}
+
+// Find applies a predicate function to each element and returns the first element
+// that satifies the predicate and a boolean on whether or not an element that
+// satisfies the predicate was found
+// -------------------------------------------------------------------------------
+// TODO: determine how to do this when we cannot return 0-val for generic type
+// -------------------------------------------------------------------------------
+//func Find(type T)(slc []T, pred func(T) bool) (T, bool) {
+//  for i := range slc {
+//    if pred(slc[i]) {
+//      return slc[i], true
+//    }
+//  }
+//
+//  return T{}, false
+//}
+
+// Satisfies applies a predicate function to each element and returns a boolean
+// representing whether ALL elements of the collection satisfy that predicate
+func Satisfies(type T)(slc []T, pred func(T) bool) bool {
+  for i := range slc {
+    if !pred(slc[i]) {
+      return false
+    }
+  }
+
+  return true
+}
