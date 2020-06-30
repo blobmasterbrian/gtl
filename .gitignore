@@ -7,3 +7,4 @@
 
 # playground.go is a file to play with the gtl constructs, but should not be committed
 **/playground.go2
+**/playground_test.go2
