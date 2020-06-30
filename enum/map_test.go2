@@ -10,9 +10,11 @@ func TestMapInt(t *testing.T) {
 		nums = append(nums, i+1)
 	}
 
-	actual := Map(nums, func(x int) int {
+	multiplyTwo := func(x int) int {
 		return x * 2
-	})
+	}
+
+	actual := Map(nums, multiplyTwo)
 
 	for i, num := range nums {
 		if actual[i] != num*2 {
@@ -29,9 +31,11 @@ func TestApplyInt(t *testing.T) {
 		expected = append(expected, (i+1)*2)
 	}
 
-	Apply(actual, func(x int) int {
+	multiplyTwo := func(x int) int {
 		return x * 2
-	})
+	}
+
+	Apply(actual, multiplyTwo)
 
 	for i := range actual {
 		if actual[i] != expected[i] {
